@@ -1,0 +1,108 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "梦境造物主",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "梦境造物主",
+        "width": 100,
+        "height": 100
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "创作故事",
+          "url": "/create-book",
+          "icon": "BookOpen"
+        },
+        {
+          "title": "怎么用",
+          "url": "/how-it-works",
+          "icon": "Sparkles"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": false,
+      "show_credits": false,
+      "show_sign_in": true,
+      "show_sign_out": false,
+      "items": []
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "梦境造物主",
+      "description": "AI 个性化故事创作平台：儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事、生成短故事、婚姻故事、朋友故事。为视频添加音频，用你的声音；你或你关心的人做主角，生成专属绘本与有声书。",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "梦境造物主",
+        "width": 1024,
+        "height": 1024
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "关于",
+          "children": [
+            {
+              "title": "怎么用",
+              "url": "/how-it-works",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "法律",
+          "children": [
+            {
+              "title": "隐私政策",
+              "url": "/privacy-policy",
+              "target": "_self"
+            },
+            {
+              "title": "服务条款",
+              "url": "/terms-of-service",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "邮箱",
+          "icon": "Mail",
+          "url": "mailto:support@aiaudiotools.shop",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true,
+    "show_built_with": false
+  }
+}

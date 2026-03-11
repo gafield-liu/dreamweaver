@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "title": "Dream Weaver — Child Story, Family Story, Tell Me Your Story, Short Story, Marriage & Friends Story | AI Story Generator",
+    "description": "Generate child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, tell me your story dad, generate short story, marriage story, friends story. Add audio to video with your voice. Your photo as the hero, your voice as the audiobook."
+  },
+  "page": {
+    "show_sections": [
+      "hero",
+      "story_types",
+      "introduce",
+      "benefits",
+      "features",
+      "faq",
+      "subscribe",
+      "cta"
+    ],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "You are the hero of every story",
+        "highlight_text": "the hero",
+        "description": "Turn a photo into the hero, generate a story from keywords, then add a dynamic video and add audio to video with your voice. Child story, family story, dad tell me your story, tell me your story dad, mom tell me your story, grandma tell me your story, generate short story, marriage story, friends story—one flow for picture books and audiobooks.",
+        "announcement": {
+          "badge": "New",
+          "title": "✨ Child story · Family story · Tell me your story · Tell me your story dad · Short story · Marriage & friends story",
+          "url": "/#story-types"
+        },
+        "tip": "Child story, family story, tell me your story (dad, mom, grandma), generate short story, marriage story, friends story—upload a photo, pick a theme, add audio to video with your voice, get your book and audiobook in minutes.",
+        "buttons": [
+          {
+            "title": "Get Started",
+            "icon": "Zap",
+            "url": "/create-book",
+            "target": "_self",
+            "variant": "default"
+          }
+        ],
+        "show_avatars": false,
+        "show_award": false,
+        "image": {
+          "src": "https://picsum.photos/seed/dreamweaver-en-hero-main/1200/800.webp",
+          "alt": "Dream Weaver — you as the story hero",
+          "width": 1200,
+          "height": 800
+        },
+        "image_invert": {
+          "src": "https://picsum.photos/seed/dreamweaver-en-hero-invert/1200/800.webp",
+          "alt": "Dream Weaver hero",
+          "width": 1200,
+          "height": 800
+        },
+        "video": {
+          "src": "/vedios/younggirl_12s_vedio.mp4",
+          "grid": "2x2",
+          "sources": [
+            "/vedios/younggirl_12s_vedio.mp4",
+            "/vedios/foreignerwoman_12s_vedio.mp4",
+            "/vedios/oldman_12s_vedio.mp4",
+            "/vedios/cat_12s_vedios.mp4"
+          ],
+          "poster": "https://picsum.photos/seed/dreamweaver-en-hero-main/1200/800.webp",
+          "alt": "Dream Weaver — you as the story hero",
+          "width": 1200,
+          "height": 800,
+          "autoplay": true,
+          "loop": true,
+          "muted": true,
+          "playsInline": true
+        },
+        "background_image": {
+          "src": "/hero-background-dreamweaver.png",
+          "alt": "Dream Creator — story-making dream background"
+        }
+      },
+      "story_types": {
+        "block": "features",
+        "id": "story_types",
+        "title": "Create Many Types of Stories",
+        "label": "Story types",
+        "description": "From child story and family story to dad tell me your story, mom tell me your story, grandma tell me your story, generate short story, marriage story, and friends story—one flow supports all.",
+        "items": [
+          {
+            "title": "Child story",
+            "description": "Generate educational picture books and bedtime stories for kids, with a video generated from your photo as the hero and your voice reading aloud.",
+            "icon": "RiBookOpenLine"
+          },
+          {
+            "title": "Family story",
+            "description": "Warm short stories with family as the main characters—perfect to keep or give to parents and kids.",
+            "icon": "RiHeartLine"
+          },
+          {
+            "title": "Dad / Mom / Grandma tell me your story",
+            "description": "Dad tell me your story, mom tell me your story, grandma tell me your story—have your story read in a parent's or grandparent's voice and pass down memories as an audiobook.",
+            "icon": "RiMicLine"
+          },
+          {
+            "title": "Generate short story",
+            "description": "Enter keywords or topics and AI writes a short story. Add a dynamic video and your voice to make a picture book or audiobook.",
+            "icon": "RiEditLine"
+          },
+          {
+            "title": "Marriage story",
+            "description": "Love and marriage stories made for you or your partner—with dynamic video and voice narration.",
+            "icon": "RiHeartLine"
+          },
+          {
+            "title": "Friends story",
+            "description": "Custom short stories for friends with them as the hero—turn it into a picture book or audiobook as a gift.",
+            "icon": "RiGroupLine"
+          }
+        ]
+      },
+      "introduce": {
+        "block": "features-list",
+        "id": "introduce",
+        "title": "What is Dream Weaver",
+        "label": "Introduce",
+        "description": "An AI platform that turns you or your family into the main character. Child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, generate short story, marriage story, friends story—we generate the story and video and read it in your voice.",
+        "image": {
+          "src": "/dreamweaver-introduce.png",
+          "alt": "Dream Weaver introduce"
+        },
+        "items": [
+          {
+            "title": "Character from a Photo",
+            "description": "Upload your photo, your child's, or anyone's. AI generates a dynamic video that appears as the hero in every scene.",
+            "icon": "RiImage2Line",
+            "image": {
+              "src": "/intro-character-from-photo.png",
+              "alt": "character from photo"
+            }
+          },
+          {
+            "title": "Story You Co-Create",
+            "description": "Enter keywords (e.g. dinosaurs, space, brushing teeth) and a learning goal (e.g. sharing, overcoming fear), or paste your own story. We support kids' tales and any theme you want.",
+            "icon": "RiBookOpenLine",
+            "image": {
+              "src": "/intro-story-co-create.png",
+              "alt": "story co-creation"
+            }
+          },
+          {
+            "title": "Picture Book in One Go",
+            "description": "Your story comes with a dynamic video as the hero (from your photo), in a unified style (watercolor, Pixar-like, etc.).",
+            "icon": "RiPaletteLine",
+            "image": {
+              "src": "/intro-picture-book.png",
+              "alt": "picture book"
+            }
+          },
+          {
+            "title": "Audiobook in Your Voice",
+            "description": "Clone your voice and add audio to video; the story is read aloud—for bedtime, gift audiobooks, or so kids can hear you when you're away.",
+            "icon": "RiMusic2Line",
+            "image": {
+              "src": "/intro-audiobook-voice.png",
+              "alt": "audiobook"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "benefits": {
+        "block": "features-accordion",
+        "id": "benefits",
+        "title": "Why Dream Weaver",
+        "label": "Benefits",
+        "description": "For parents and kids who want bedtime picture books, and for anyone who wants personalized stories and audiobooks.",
+        "items": [
+          {
+            "title": "Create Without the Fuss",
+            "description": "No more scrambling for a new story. Pick a theme, set a goal, or paste your own text—in minutes you have a custom tale with you or someone you care about as the hero, plus an audiobook.",
+            "icon": "RiHeartLine",
+            "image": {
+              "src": "/benefits-create-without-fuss.png",
+              "alt": "Create without the fuss — custom story in minutes"
+            }
+          },
+          {
+            "title": "Stories That Stay Fresh",
+            "description": "Every story is unique, with the hero you choose. Kids' education, adventure, gifts, memoirs—themes and styles are up to you.",
+            "icon": "RiStarLine",
+            "image": {
+              "src": "/benefits-stories-stay-fresh.png",
+              "alt": "Stories that stay fresh — unique themes and styles"
+            }
+          },
+          {
+            "title": "Your Voice When You're Away",
+            "description": "Voice cloning lets you add audio to video so family can hear you read the story anytime—bedtime for kids, travel, or gift audiobooks.",
+            "icon": "RiMicLine",
+            "image": {
+              "src": "/benefits-voice-when-away.png",
+              "alt": "Your voice when you're away — family hears you read anytime"
+            }
+          }
+        ]
+      },
+      "features": {
+        "id": "features",
+        "title": "How It Works",
+        "description": "Four simple steps from photo to your personalized story book and audiobook.",
+        "primary_cta": {
+          "title": "View full guide & video",
+          "url": "/how-it-works"
+        },
+        "items": [
+          {
+            "title": "Upload Photo",
+            "description": "Add your photo, your child's, or anyone's. AI generates a dynamic video that appears as the hero in the story.",
+            "icon": "RiImageAddLine"
+          },
+          {
+            "title": "Set Theme & Goal",
+            "description": "Enter keywords (e.g. dinosaurs, space, brushing teeth) and an educational goal (e.g. learn to share, overcome fear), or paste your own story.",
+            "icon": "RiEditLine"
+          },
+          {
+            "title": "Generate Story & Video",
+            "description": "Get a ~5 minute story with a dynamic video from your photo as the hero, in a consistent style you choose (e.g. watercolor, Pixar-like).",
+            "icon": "RiPaletteLine"
+          },
+          {
+            "title": "Listen in Your Voice",
+            "description": "Clone your voice and add audio to video—your story plays as an audiobook so family can hear you read it anytime.",
+            "icon": "RiVolumeUpLine"
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "Frequently Asked Questions",
+        "description": "Have more questions? Contact us at support@aiaudiotools.shop.",
+        "items": [
+          {
+            "question": "How do I add audio to video?",
+            "answer": "After your story and dynamic video are ready, you record or upload a short voice sample. We clone your voice and add audio to video—the story is read aloud in your voice, perfect for child story, family story, or tell me your story dad/mom/grandma style audiobooks."
+          },
+          {
+            "question": "How does the video-from-photo hero work?",
+            "answer": "You upload a photo (of yourself, your child, or anyone). Our AI generates a dynamic video from it that appears as the hero in the story."
+          },
+          {
+            "question": "Can I choose the video or visual style?",
+            "answer": "Yes. You can pick from styles such as watercolor or Pixar-like. The same style is applied to the video and story for a cohesive look."
+          },
+          {
+            "question": "How does voice cloning work?",
+            "answer": "We use a short sample of your voice to create a clone. The system then reads the story aloud in that voice—great for bedtime, gift audiobooks, or when you're not there."
+          },
+          {
+            "question": "How long is each story?",
+            "answer": "Each story is designed to be about 5 minutes when read aloud, with a dynamic video as the hero."
+          },
+          {
+            "question": "Is my child's photo and data safe?",
+            "answer": "We take privacy seriously. Photos and data are used only to generate your personalized content and are handled according to our Privacy Policy. We do not use your content for training unrelated models."
+          },
+          {
+            "question": "Is it only for children's stories?",
+            "answer": "No. You can create kids' picture books and educational stories, or adventure stories, gift stories, and audiobook memoirs for yourself or friends—you choose the hero and the theme."
+          }
+        ]
+      },
+      "subscribe": {
+        "block": "subscribe",
+        "id": "subscribe",
+        "title": "Join the waitlist",
+        "description": "Be the first to know when we launch new features. No spam.",
+        "submit": {
+          "action": "/api/waitlist",
+          "input": {
+            "placeholder": "Enter your email"
+          },
+          "button": {
+            "title": "Join waitlist"
+          }
+        }
+      },
+      "cta": {
+        "id": "cta",
+        "title": "Start your first Dream Weaver story",
+        "description": "Child story, family story, tell me your story dad or mom or grandma, generate short story, marriage story, friends story—add audio to video with your voice. Make yourself or someone you care about the hero.",
+        "buttons": [
+          {
+            "title": "Get Started",
+            "url": "/create-book",
+            "target": "_self",
+            "icon": "Zap"
+          },
+          {
+            "title": "Contact Us",
+            "url": "mailto:support@aiaudiotools.shop",
+            "target": "_blank",
+            "variant": "outline",
+            "icon": "Mail"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}

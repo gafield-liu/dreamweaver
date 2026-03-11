@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "title": "AI Music Generator",
+    "description": "Generate amazing music with AI"
+  },
+  "page": {
+    "title": "AI Music Generator",
+    "description": "Generate amazing music with AI"
+  },
+  "generator": {
+    "title": "Music Generator",
+    "tabs": {
+      "music": "Music",
+      "tts": "Voice / TTS"
+    },
+    "prompt": "Prompt",
+    "prompt_placeholder": "A love story of Romeo and Juliet",
+    "generate": "Generate Music",
+    "loading": "Loading...",
+    "generating": "Generating...",
+    "sign_in_to_generate": "Sign In to Generate Music",
+    "credits_cost": "{credits} credits cost",
+    "credits_remaining": "{credits} credits remaining",
+    "buy_credits": "Buy Credits",
+    "generation_progress": "Generation Progress",
+    "time_cost": "This may take up to 2-3 minutes...",
+    "generated_song": "Generated Song",
+    "ready_to_play": "Ready to Play",
+    "audio_generating": "Audio Generating...",
+    "generating_song": "Generating Song...",
+    "waiting_generation": "Please wait while we create your masterpiece",
+    "no_song_generated": "No Song Generated",
+    "downloading": "Downloading...",
+    "download_success": "Download completed successfully",
+    "download_failed": "Failed to download audio",
+    "form": {
+      "custom_mode": "Custom Mode",
+      "title": "Title",
+      "title_placeholder": "The Sound of Silence",
+      "style": "Style of Music",
+      "style_placeholder": "indie, electronic, synths, 120bpm, distorted",
+      "instrumental": "Instrumental",
+      "prompt": "Prompt",
+      "prompt_placeholder": "A country folk song about love",
+      "model": "Model",
+      "lyrics": "Lyrics",
+      "lyrics_placeholder": "Write your own lyrics, two verses (8 lines) for the best result"
+    },
+    "tts": {
+      "voice": "Voice",
+      "voice_rachel_hint": "Use preset voice Rachel (no upload required).",
+      "optional": "optional",
+      "speaker_audio": "Speaker voice sample",
+      "speaker_audio_hint": "Upload a 30-second (or longer) audio of the speaker. We'll clone this voice for TTS.",
+      "speaker_audio_invalid": "Please upload an audio file.",
+      "speaker_audio_too_large": "Audio file is too large (max 15MB).",
+      "speaker_upload_success": "Speaker audio uploaded.",
+      "speaker_upload_failed": "Failed to upload audio.",
+      "speaker_uploaded": "Uploaded",
+      "text_to_speak": "Text to speak",
+      "text_placeholder": "Enter the text you want to be read in the cloned voice...",
+      "upload_speaker_first": "Please upload a speaker voice sample first.",
+      "enter_text": "Please enter the text to speak.",
+      "generate": "Generate speech",
+      "generating": "Generating...",
+      "generate_success": "Speech generated.",
+      "generate_failed": "Failed to generate speech.",
+      "coming_soon": "TTS / voice cloning is coming soon. Backend can be wired here.",
+      "no_speech_yet": "Upload a voice sample and enter text, then generate.",
+      "generated_speech": "Generated speech"
+    }
+  }
+}

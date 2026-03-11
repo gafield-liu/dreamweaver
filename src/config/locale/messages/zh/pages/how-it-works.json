@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "怎么用 — 儿童故事、家庭故事、Tell me your story、短故事 | 梦境造物主",
+    "description": "三步搞定儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事、生成短故事、婚姻与朋友故事：定制角色、创作故事、生成专属讲故事语音。"
+  },
+  "page": {
+    "title": "怎么用",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "怎么用",
+        "description": "儿童故事、家庭故事、长辈讲故事、短故事、婚姻与朋友故事 — 三步从照片到专属故事书与你的声音有声书。",
+        "background_image": {
+          "src": "/imgs/bg/tree.jpg",
+          "alt": "hero background"
+        }
+      },
+      "how_it_works": {
+        "block": "how-it-works",
+        "id": "how-it-works",
+        "label": "简单快捷",
+        "title": "怎么用",
+        "description": "用三个简单步骤创作儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事、短故事、婚姻与朋友故事，点击任一步骤即可体验。",
+        "primary_cta": {
+          "title": "一键创作故事书（儿童故事 · 家庭故事 · 长辈讲故事 · 短故事）",
+          "url": "/create-book"
+        },
+        "items": [
+          {
+            "title": "定制角色",
+            "description": "上传一张照片，AI 立刻生成相应的动态视频，作为故事主角（儿童故事、家庭故事、朋友故事皆可）。",
+            "icon": "RiImageAddLine",
+            "image": {
+              "src": "/imgs/how-it-works/step1-customize-character.png",
+              "alt": "用照片定制你的故事角色"
+            },
+            "url": "/create-book",
+            "cta": "立即体验"
+          },
+          {
+            "title": "创作故事",
+            "description": "输入关键词生成短故事：儿童故事、家庭故事、婚姻故事、朋友故事，或爸爸/妈妈/奶奶给我讲你的故事 — 也可粘贴自己的故事。",
+            "icon": "RiBookOpenLine",
+            "image": {
+              "src": "/imgs/how-it-works/step2-create-story.png",
+              "alt": "用关键词创作你的故事"
+            },
+            "url": "/create-book",
+            "cta": "生成故事"
+          },
+          {
+            "title": "声音魔法",
+            "description": "录制30秒样本，生成你的专属讲故事语音包。",
+            "icon": "RiMicLine",
+            "image": {
+              "src": "/imgs/how-it-works/step3-voice-magic.png",
+              "alt": "创建你的讲故事语音"
+            },
+            "url": "/create-book",
+            "cta": "创建语音"
+          }
+        ]
+      },
+      "video_tutorial": {
+        "block": "video-tutorial",
+        "id": "video-tutorial",
+        "label": "视频教程",
+        "title": "如何制作专属故事书",
+        "description": "观看下面的视频，了解如何从上传照片、生成故事到录制声音，一步步完成你的 create-book 故事书与有声书。",
+        "video": {
+          "src": "/vedios/create-book-tutorial.mp4",
+          "alt": "Create Book 功能使用教程"
+        },
+        "cta": {
+          "title": "去制作我的故事书",
+          "url": "/create-book"
+        }
+      }
+    }
+  }
+}

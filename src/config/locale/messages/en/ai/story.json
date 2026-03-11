@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "AI Story Generator — Child Story, Family Story, Tell Me Your Story, Short Story, Marriage & Friends | Dream Weaver",
+    "description": "Enter keywords to generate child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, short story, marriage story, friends story. For picture books and audiobooks."
+  },
+  "page": {
+    "title": "AI Story Generator",
+    "description": "Enter keywords to generate child story, family story, tell me your story, short story, marriage or friends story. We'll open a chat and AI will write it for you."
+  },
+  "generator": {
+    "title": "Generate Your Story",
+    "description": "Enter keywords or topics to generate child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, short story, marriage story, or friends story—one flow for all.",
+    "keywords_label": "Story keywords or topics",
+    "keywords_placeholder": "e.g. child story, family, dad tell me your story, marriage, friends, bedtime, dinosaurs, adventure, birthday gift",
+    "keywords_required": "Please enter at least one keyword or topic.",
+    "prompt_prefix": "{keywords}",
+    "generate": "Generate Story",
+    "generating": "Creating chat...",
+    "generate_failed": "Failed to start story. Please try again."
+  }
+}

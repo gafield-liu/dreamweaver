@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "title": "How It Works — Child Story, Family Story, Tell Me Your Story, Short Story | Dream Weaver",
+    "description": "Three steps for child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, generate short story, marriage story, friends story: customize character, create story, add your voice."
+  },
+  "page": {
+    "title": "How It Works",
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "How It Works",
+        "description": "Child story, family story, tell me your story, short story, marriage & friends story—three steps from photo to your story book and audiobook in your voice.",
+        "background_image": {
+          "src": "/imgs/bg/tree.jpg",
+          "alt": "hero background"
+        }
+      },
+      "how_it_works": {
+        "block": "how-it-works",
+        "id": "how-it-works",
+        "label": "Simple & Fast",
+        "title": "How It Works",
+        "description": "Three simple steps to create child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, short story, marriage story, friends story. Click any step to try.",
+        "primary_cta": {
+          "title": "Create story book (child story · family story · tell me your story · short story)",
+          "url": "/create-book"
+        },
+        "items": [
+          {
+            "title": "Customize Your Character",
+            "description": "Upload a photo and AI generates a dynamic video as the story hero (you, your child, or a grandparent)—for child story, family story, or friends story.",
+            "icon": "RiImageAddLine",
+            "image": {
+              "src": "/imgs/how-it-works/step1-customize-character.png",
+              "alt": "Customize your character with a photo"
+            },
+            "url": "/create-book",
+            "cta": "Try it now"
+          },
+          {
+            "title": "Create Your Story",
+            "description": "Enter keywords to generate short story: child story, family story, marriage story, friends story, or dad/mom/grandma tell me your story—or paste your own story.",
+            "icon": "RiBookOpenLine",
+            "image": {
+              "src": "/imgs/how-it-works/step2-create-story.png",
+              "alt": "Create your story with keywords"
+            },
+            "url": "/create-book",
+            "cta": "Generate story"
+          },
+          {
+            "title": "Voice Magic",
+            "description": "Record a 30-second sample and get your own storytelling voice pack.",
+            "icon": "RiMicLine",
+            "image": {
+              "src": "/imgs/how-it-works/step3-voice-magic.png",
+              "alt": "Create your storytelling voice"
+            },
+            "url": "/create-book",
+            "cta": "Create voice"
+          }
+        ]
+      },
+      "video_tutorial": {
+        "block": "video-tutorial",
+        "id": "video-tutorial",
+        "label": "Video Tutorial",
+        "title": "How to Create Your Story Book",
+        "description": "Watch the video below to learn how to create your story book and audiobook step by step—from uploading a photo, generating a story, to recording your voice.",
+        "video": {
+          "src": "/vedios/create-book-tutorial.mp4",
+          "alt": "Create Book feature tutorial"
+        },
+        "cta": {
+          "title": "Create my story book",
+          "url": "/create-book"
+        }
+      }
+    }
+  }
+}

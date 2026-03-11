@@ -1,0 +1,108 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Dream Weaver",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Dream Weaver",
+        "width": 100,
+        "height": 100
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Create Story",
+          "url": "/create-book",
+          "icon": "BookOpen"
+        },
+        {
+          "title": "How It Works",
+          "url": "/how-it-works",
+          "icon": "Sparkles"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": false,
+      "show_credits": false,
+      "show_sign_in": true,
+      "show_sign_out": false,
+      "items": []
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Dream Weaver",
+      "description": "AI story creator: child story, family story, dad tell me your story, mom tell me your story, grandma tell me your story, tell me your story dad, generate short story, marriage story, friends story. Add audio to video with your voice. You or someone you love as the hero—picture books and audiobooks.",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Dream Weaver",
+        "width": 1024,
+        "height": 1024
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "About",
+          "children": [
+            {
+              "title": "How It Works",
+              "url": "/how-it-works",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Legal",
+          "children": [
+            {
+              "title": "Privacy Policy",
+              "url": "/privacy-policy",
+              "target": "_self"
+            },
+            {
+              "title": "Terms of Service",
+              "url": "/terms-of-service",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Email",
+          "icon": "Mail",
+          "url": "mailto:support@aiaudiotools.shop",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true,
+    "show_built_with": false
+  }
+}

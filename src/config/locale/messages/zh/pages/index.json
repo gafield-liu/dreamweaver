@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "title": "梦境造物主 — 儿童故事、家庭故事、长辈讲故事、短故事、婚姻与朋友故事 | AI 故事生成",
+    "description": "生成儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事（tell me your story dad/mom/grandma）、生成短故事、婚姻故事、朋友故事。为视频添加音频、用你的声音朗读。照片做主角，声音成有声书。"
+  },
+  "page": {
+    "show_sections": [
+      "hero",
+      "story_types",
+      "introduce",
+      "benefits",
+      "features",
+      "faq",
+      "subscribe",
+      "cta"
+    ],
+    "sections": {
+      "hero": {
+        "id": "hero",
+        "title": "你是每一个故事的主角",
+        "highlight_text": "故事的主角",
+        "description": "上传照片做主角，用关键词生成专属故事并配上动态视频与你的声音。支持儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事、生成短故事、婚姻故事、朋友故事，一键生成绘本与有声书。",
+        "announcement": {
+          "badge": "全新",
+          "title": "✨ 儿童故事 · 家庭故事 · 长辈讲故事 · 短故事 · 婚姻与朋友故事",
+          "url": "/#story-types"
+        },
+        "tip": "儿童故事、家庭故事、长辈讲故事、短故事、婚姻与朋友故事 — 上传照片、选主题，几分钟得到专属绘本与有声书。",
+        "buttons": [
+          {
+            "title": "立即开始",
+            "icon": "Zap",
+            "url": "/create-book",
+            "target": "_self",
+            "variant": "default"
+          }
+        ],
+        "show_avatars": false,
+        "show_award": false,
+        "image": {
+          "src": "https://picsum.photos/seed/dreamweaver-zh-hero-main/1200/800.webp",
+          "alt": "梦境造物主 — 你是故事主角",
+          "width": 1200,
+          "height": 800
+        },
+        "image_invert": {
+          "src": "https://picsum.photos/seed/dreamweaver-zh-hero-invert/1200/800.webp",
+          "alt": "梦境造物主",
+          "width": 1200,
+          "height": 800
+        },
+        "video": {
+          "src": "/vedios/younggirl_12s_vedio.mp4",
+          "grid": "2x2",
+          "sources": [
+            "/vedios/younggirl_12s_vedio.mp4",
+            "/vedios/foreignerwoman_12s_vedio.mp4",
+            "/vedios/oldman_12s_vedio.mp4",
+            "/vedios/cat_12s_vedios.mp4"
+          ],
+          "poster": "https://picsum.photos/seed/dreamweaver-zh-hero-main/1200/800.webp",
+          "alt": "梦境造物主 — 你是故事主角",
+          "width": 1200,
+          "height": 800,
+          "autoplay": true,
+          "loop": true,
+          "muted": true,
+          "playsInline": true
+        },
+        "background_image": {
+          "src": "/hero-background-dreamweaver.png",
+          "alt": "梦境造物主 — 梦幻故事创作背景"
+        }
+      },
+      "story_types": {
+        "block": "features",
+        "id": "story_types",
+        "title": "创作多种类型的故事",
+        "label": "故事类型",
+        "description": "从儿童故事、家庭故事，到爸爸/妈妈/奶奶给我讲你的故事、生成短故事、婚姻故事、朋友故事，一种流程全部支持。",
+        "items": [
+          {
+            "title": "儿童故事 Child story",
+            "description": "为孩子生成教育绘本与睡前故事，主角可由照片生成的动态视频呈现，用你的声音朗读。",
+            "icon": "RiBookOpenLine"
+          },
+          {
+            "title": "家庭故事 Family story",
+            "description": "以家人为主角的温馨短故事，适合留念或送给长辈、孩子。",
+            "icon": "RiHeartLine"
+          },
+          {
+            "title": "爸爸/妈妈/奶奶给我讲你的故事",
+            "description": "Dad tell me your story、Mom tell me your story、Grandma tell me your story — 用长辈的声音讲“你的故事”，传承回忆，生成有声书。",
+            "icon": "RiMicLine"
+          },
+          {
+            "title": "生成短故事 Generate short story",
+            "description": "输入关键词或主题，AI 生成短篇故事，可配动态视频与你的声音，做成绘本或有声书。",
+            "icon": "RiEditLine"
+          },
+          {
+            "title": "婚姻故事 Marriage story",
+            "description": "爱情与婚姻主题的专属故事，送给伴侣或留作纪念，支持动态视频与声音朗读。",
+            "icon": "RiHeartLine"
+          },
+          {
+            "title": "朋友故事 Friends story",
+            "description": "送给朋友的定制短故事，以 TA 为主角，生成绘本或有声书作为礼物。",
+            "icon": "RiGroupLine"
+          }
+        ]
+      },
+      "introduce": {
+        "block": "features-list",
+        "id": "introduce",
+        "title": "什么是梦境造物主",
+        "label": "产品简介",
+        "description": "用 AI 把你或家人变成故事里的主角。支持儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事、生成短故事、婚姻故事、朋友故事，生成动态视频与故事并用你的声音朗读成有声书。",
+        "image": {
+          "src": "/dreamweaver-introduce.png",
+          "alt": "梦境造物主简介"
+        },
+        "items": [
+          {
+            "title": "照片变主角",
+            "description": "上传你、孩子或任何人的照片，AI 生成相应的动态视频，作为故事主角在视频中呈现。",
+            "icon": "RiImage2Line",
+            "image": {
+              "src": "/intro-character-from-photo.png",
+              "alt": "照片生成角色"
+            }
+          },
+          {
+            "title": "和你一起编故事",
+            "description": "输入关键词（如恐龙、太空、不想刷牙）和教育目的（如学会分享、克服恐惧），或直接粘贴自己的故事。我们支持儿童短故事，也支持任意主题的创作。",
+            "icon": "RiBookOpenLine",
+            "image": {
+              "src": "/intro-story-co-create.png",
+              "alt": "剧情共创"
+            }
+          },
+          {
+            "title": "一键生成绘本",
+            "description": "故事配有由照片生成的动态视频作为主角，风格统一（水彩风、皮克斯风等）。",
+            "icon": "RiPaletteLine",
+            "image": {
+              "src": "/intro-picture-book.png",
+              "alt": "绘本生成"
+            }
+          },
+          {
+            "title": "用你的声音讲故事",
+            "description": "克隆你的声音并支持为视频添加音频，自动朗读故事。适合睡前故事、礼物有声书，或父母不在家时让孩子听到你的声音。",
+            "icon": "RiMusic2Line",
+            "image": {
+              "src": "/intro-audiobook-voice.png",
+              "alt": "有声书"
+            }
+          }
+        ],
+        "className": "bg-muted"
+      },
+      "benefits": {
+        "block": "features-accordion",
+        "id": "benefits",
+        "title": "为什么选梦境造物主",
+        "label": "产品优势",
+        "description": "既为家长和孩子准备睡前绘本，也为日常用户准备个性化故事与有声书。",
+        "items": [
+          {
+            "title": "省心创作",
+            "description": "不用绞尽脑汁想新故事。选主题、定目标或粘贴自己的文字，几分钟就有一本主角为你或你关心的人定制的故事与有声书。",
+            "icon": "RiHeartLine",
+            "image": {
+              "src": "/benefits-create-without-fuss.png",
+              "alt": "省心创作 — 几分钟定制故事与有声书"
+            }
+          },
+          {
+            "title": "常读常新",
+            "description": "每本故事都独一无二，主角随你定。儿童教育、冒险、礼物、回忆录……主题与风格随你选。",
+            "icon": "RiStarLine",
+            "image": {
+              "src": "/benefits-stories-stay-fresh.png",
+              "alt": "常读常新 — 主题与风格随你选"
+            }
+          },
+          {
+            "title": "不在家也能“陪读”",
+            "description": "声音克隆支持为视频添加音频，家人随时能听到你读故事，儿童睡前、出差加班或送礼物时都能用。",
+            "icon": "RiMicLine",
+            "image": {
+              "src": "/benefits-voice-when-away.png",
+              "alt": "不在家也能陪读 — 家人随时听你读故事"
+            }
+          }
+        ]
+      },
+      "features": {
+        "id": "features",
+        "title": "怎么用",
+        "description": "四步从照片到专属故事书与有声书。",
+        "primary_cta": {
+          "title": "查看完整教程与视频",
+          "url": "/how-it-works"
+        },
+        "items": [
+          {
+            "title": "上传照片",
+            "description": "上传你、孩子或任何人的照片，AI 生成相应的动态视频，在故事中作为主角出现。",
+            "icon": "RiImageAddLine"
+          },
+          {
+            "title": "设定主题与目的",
+            "description": "输入关键词（如恐龙、太空、不想刷牙）和教育目的（如学会分享、克服恐惧），或直接粘贴自己的故事。",
+            "icon": "RiEditLine"
+          },
+          {
+            "title": "生成故事与视频",
+            "description": "得到约 5 分钟的故事，配有由照片生成的动态视频作为主角，风格统一可选（如水彩风、皮克斯风等）。",
+            "icon": "RiPaletteLine"
+          },
+          {
+            "title": "用你的声音听",
+            "description": "克隆你的声音，为视频添加音频，把故事当有声书播放，家人随时能听到你读。",
+            "icon": "RiVolumeUpLine"
+          }
+        ]
+      },
+      "faq": {
+        "id": "faq",
+        "title": "常见问题",
+        "description": "还有其他问题？欢迎发邮件至 support@aiaudiotools.shop。",
+        "items": [
+          {
+            "question": "如何为视频添加音频？",
+            "answer": "故事和动态视频生成后，录制或上传一段短语音即可克隆声音。我们为视频添加音频，用你的声音朗读故事，适合儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事等有声书。"
+          },
+          {
+            "question": "照片生成视频主角是怎么实现的？",
+            "answer": "上传照片后，AI 会根据照片生成相应的动态视频，作为故事主角（可以是孩子、自己或任何人）。"
+          },
+          {
+            "question": "可以选视频/画面风格吗？",
+            "answer": "可以。可选择如水彩风、皮克斯风等风格，视频与故事会统一使用该风格。"
+          },
+          {
+            "question": "声音克隆是怎么做的？",
+            "answer": "通过你的一段短语音生成声音克隆，系统会用这个声音朗读故事，适合睡前故事、礼物有声书或家人不在身边时播放。"
+          },
+          {
+            "question": "一本故事大概多长？",
+            "answer": "每本故事朗读约 5 分钟，配有动态视频作为主角。"
+          },
+          {
+            "question": "孩子照片和数据安全吗？",
+            "answer": "我们重视隐私。照片与数据仅用于生成您的专属内容，具体处理方式见隐私政策。我们不会将您的内容用于无关模型训练。"
+          },
+          {
+            "question": "只能做儿童故事吗？",
+            "answer": "不限于儿童。你可以做儿童绘本与教育故事，也可以做给自己或朋友的冒险故事、礼物故事、有声回忆录等，主角和主题都由你定。"
+          }
+        ]
+      },
+      "subscribe": {
+        "block": "subscribe",
+        "id": "subscribe",
+        "title": "加入等待名单",
+        "description": "第一时间了解新功能上线，我们不会滥发邮件。",
+        "submit": {
+          "action": "/api/waitlist",
+          "input": {
+            "placeholder": "输入您的邮箱"
+          },
+          "button": {
+            "title": "加入等待名单"
+          }
+        }
+      },
+      "cta": {
+        "id": "cta",
+        "title": "创作你的第一本故事",
+        "description": "儿童故事、家庭故事、爸爸/妈妈/奶奶给我讲你的故事、生成短故事、婚姻故事、朋友故事——为视频添加音频，用你的声音讲故事，让你或你关心的人成为主角。",
+        "buttons": [
+          {
+            "title": "立即开始",
+            "url": "/create-book",
+            "target": "_self",
+            "icon": "Zap"
+          },
+          {
+            "title": "联系我们",
+            "url": "mailto:support@aiaudiotools.shop",
+            "target": "_blank",
+            "variant": "outline",
+            "icon": "Mail"
+          }
+        ],
+        "className": "bg-muted"
+      }
+    }
+  }
+}
