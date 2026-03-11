@@ -2,8 +2,11 @@
  * 有声书合成：将时长对齐的无声视频与 TTS 音频合并，只输出一条带音频的视频文件。
  * - 音频长于视频：循环视频直至与音频等长。
  * - 音频短于视频：截断视频至音频长度。
- * 需要服务器安装 ffmpeg 与 ffprobe。
- * 注意：为避免 HTTPS 长时间读取导致 TLS “End of file”，会先将视频/音频下载到本地再合并。
+ *
+ * ffmpeg 支持方式（按优先级）：
+ * 1. 环境变量 FFMPEG_PATH / FFPROBE_PATH 指定可执行文件路径
+ * 2. optionalDependencies：@ffmpeg-installer/ffmpeg、@ffprobe-installer/ffprobe（Vercel 等无系统 ffmpeg 时自动使用）
+ * 3. 系统 PATH 中的 ffmpeg、ffprobe（Docker/自建机可安装 ffmpeg 包）
  */
 
 import { spawnSync } from 'child_process';
@@ -21,6 +24,29 @@ import { getStorageService } from '@/shared/services/storage';
 import { envConfigs } from '@/config';
 
 const MERGE_CREDITS_COST = 4;
+
+/** 解析 ffmpeg/ffprobe 可执行文件路径：优先环境变量，其次 npm 安装器，否则使用系统 PATH。 */
+function getFfmpegPath(): string {
+  if (process.env.FFMPEG_PATH) return process.env.FFMPEG_PATH;
+  try {
+    const p = require('@ffmpeg-installer/ffmpeg') as { path: string };
+    if (p?.path) return p.path;
+  } catch {
+    // optional dependency not installed
+  }
+  return 'ffmpeg';
+}
+
+function getFfprobePath(): string {
+  if (process.env.FFPROBE_PATH) return process.env.FFPROBE_PATH;
+  try {
+    const p = require('@ffprobe-installer/ffprobe') as { path: string };
+    if (p?.path) return p.path;
+  } catch {
+    // optional dependency not installed
+  }
+  return 'ffprobe';
+}
 
 function resolveUrl(url: string): string {
   if (!url || url.startsWith('http://') || url.startsWith('https://')) return url;
@@ -70,7 +96,7 @@ async function downloadToFile(url: string, localPath: string): Promise<void> {
 function getDurationSeconds(pathOrUrl: string): number {
   try {
     const r = spawnSync(
-      'ffprobe',
+      getFfprobePath(),
       [
         '-v', 'error',
         '-show_entries', 'format=duration',
@@ -112,8 +138,9 @@ function mergeVideoAudio(
   ];
 
   const opts = { encoding: 'utf-8' as const, timeout: 600000 }; // 10 分钟
+  const ffmpegPath = getFfmpegPath();
   if (videoDuration < audioDuration) {
-    const r = spawnSync('ffmpeg', [
+    const r = spawnSync(ffmpegPath, [
       '-y', '-stream_loop', '-1', '-i', videoPath,
       '-i', audioPath, '-t', durationArg,
       ...mapVideoAudio,
@@ -124,7 +151,7 @@ function mergeVideoAudio(
       throw new Error(err);
     }
   } else {
-    const r = spawnSync('ffmpeg', [
+    const r = spawnSync(ffmpegPath, [
       '-y', '-i', videoPath, '-i', audioPath,
       '-t', durationArg,
       ...mapVideoAudio,
@@ -168,7 +195,7 @@ export async function POST(request: Request) {
     audioUrl = resolveUrl(audioUrl);
 
     try {
-      const v = spawnSync('ffmpeg', ['-version'], { encoding: 'utf-8', timeout: 2000 });
+      const v = spawnSync(getFfmpegPath(), ['-version'], { encoding: 'utf-8', timeout: 2000 });
       if (v.status !== 0 && v.error) throw new Error('ffmpeg not found');
     } catch {
       return respErr('ffmpeg is not available on this server');
