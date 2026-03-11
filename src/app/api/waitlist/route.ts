@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const parsed = bodySchema.safeParse(body);
 
     if (!parsed.success) {
-      return respErr(parsed.error.errors?.[0]?.message || 'Invalid email');
+      return respErr(parsed.error.issues?.[0]?.message || 'Invalid email');
     }
 
     const { email } = parsed.data;
