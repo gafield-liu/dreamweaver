@@ -18,6 +18,18 @@ const nextConfig = {
   reactStrictMode: false,
   // 避免 Turbopack 打包 ffmpeg/ffprobe 安装器（含二进制与动态 require），构建时仅作外部依赖
   serverExternalPackages: ['@ffmpeg-installer/ffmpeg', '@ffprobe-installer/ffprobe'],
+  // 部署时从 merge-video-audio 的 Serverless 包中排除 ffmpeg/ffprobe 二进制，避免超过 250 MB 限制
+  ...(process.env.VERCEL
+    ? {
+        outputFileTracingExcludes: {
+          // 仅 merge-video-audio 会 require 这两包，用 * 确保任意打包组合都不会带上二进制
+          '*': [
+            'node_modules/@ffmpeg-installer/**',
+            'node_modules/@ffprobe-installer/**',
+          ],
+        },
+      }
+    : {}),
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   images: {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
