@@ -40,13 +40,12 @@ async function downloadToFile(url: string, localPath: string): Promise<void> {
       let res: Response;
       try {
         // 使用 undici 可设置更长 connectTimeout，避免 UND_ERR_CONNECT_TIMEOUT（需安装 undici）
-        // @ts-expect-error optional dependency undici
         const undici = await import(/* webpackIgnore: true */ 'undici');
         const dispatcher = new (undici as { Agent: new (o: { connectTimeout: number; bodyTimeout: number }) => unknown }).Agent({
           connectTimeout: connectTimeoutMs,
           bodyTimeout: bodyTimeoutMs,
         });
-        res = await (undici as { fetch: (u: string, o?: object) => Promise<Response> }).fetch(url, {
+        res = await (undici as unknown as { fetch: (u: string, o?: object) => Promise<Response> }).fetch(url, {
           signal: AbortSignal.timeout(bodyTimeoutMs),
           dispatcher,
         });
