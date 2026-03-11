@@ -16,6 +16,8 @@ const withNextIntl = createNextIntlPlugin({
 const nextConfig = {
   output: process.env.VERCEL ? undefined : 'standalone',
   reactStrictMode: false,
+  // 避免 Turbopack 打包 ffmpeg/ffprobe 安装器（含二进制与动态 require），构建时仅作外部依赖
+  serverExternalPackages: ['@ffmpeg-installer/ffmpeg', '@ffprobe-installer/ffprobe'],
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   images: {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
