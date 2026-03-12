@@ -4,18 +4,35 @@ import { AIMediaType, AITaskStatus } from '@/extensions/ai';
 import { getUuid } from '@/shared/lib/hash';
 import { respData, respErr } from '@/shared/lib/resp';
 import { createAITask, updateAITaskById, type NewAITask } from '@/shared/models/ai_task';
-import { getRemainingCredits } from '@/shared/models/credit';
+import { consumeCredits, getRemainingCredits } from '@/shared/models/credit';
 import { getUserInfo } from '@/shared/models/user';
 import { getAIService } from '@/shared/services/ai';
+import { getAudioDurationFromUrl } from '@/shared/lib/audio';
 
 const TTS_MODEL = 'elevenlabs/text-to-speech-turbo-2-5';
 const DEFAULT_VOICE = 'Rachel';
-const TTS_CREDITS_COST = 8;
+/** 每分钟音频消耗的积分（按合成音频时长计费） */
+const TTS_CREDITS_PER_MINUTE = 2;
+/** 最少消耗积分（不足 1 分钟按 1 积分） */
+const TTS_MIN_CREDITS = 1;
+/** 发起 TTS 前至少需要的剩余积分（避免 0 积分用户白嫖 API） */
+const TTS_MIN_REMAINING_TO_START = 1;
 const POLL_INTERVAL_MS = 2000;
 const POLL_TIMEOUT_MS = 120000;
 
 /**
- * TTS (text-to-speech) via Kie provider. Consumes TTS_CREDITS_COST credits; refunds on failure.
+ * 根据音频时长（秒）计算应扣积分。
+ * 公式：max(TTS_MIN_CREDITS, ceil(durationSeconds / 60 * TTS_CREDITS_PER_MINUTE))
+ */
+function creditsForDurationSeconds(durationSeconds: number): number {
+  if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) return TTS_MIN_CREDITS;
+  const byMinute = Math.ceil((durationSeconds / 60) * TTS_CREDITS_PER_MINUTE);
+  return Math.max(TTS_MIN_CREDITS, byMinute);
+}
+
+/**
+ * TTS (text-to-speech) via Kie provider.
+ * 创建任务时不扣费（costCredits=0），合成成功后再根据音频时长扣费；失败不扣费。
  */
 export async function POST(req: NextRequest) {
   let createdTaskId: string | null = null;
@@ -34,7 +51,7 @@ export async function POST(req: NextRequest) {
     }
 
     const remaining = await getRemainingCredits(user.id);
-    if (remaining < TTS_CREDITS_COST) {
+    if (remaining < TTS_MIN_REMAINING_TO_START) {
       return respErr('Insufficient credits for voice generation');
     }
 
@@ -65,7 +82,7 @@ export async function POST(req: NextRequest) {
       model: TTS_MODEL,
       prompt: text.trim().slice(0, 500),
       status: AITaskStatus.PROCESSING,
-      costCredits: TTS_CREDITS_COST,
+      costCredits: 0, // 成功后再按时长扣费
       options: JSON.stringify({ voice }),
       taskId: result.taskId,
       taskInfo: result.taskInfo ? JSON.stringify(result.taskInfo) : null,
@@ -83,13 +100,43 @@ export async function POST(req: NextRequest) {
       const info = queryResult.taskInfo as { audioUrl?: string } | undefined;
 
       if (status === 'success' && info?.audioUrl) {
-        if (createdTaskId) {
+        const audioUrl = info.audioUrl;
+        const durationSeconds = await getAudioDurationFromUrl(audioUrl);
+        const costCredits = creditsForDurationSeconds(durationSeconds);
+        const remainingAfter = await getRemainingCredits(user.id);
+        if (remainingAfter < costCredits) {
+          if (createdTaskId) {
+            await updateAITaskById(createdTaskId, { status: AITaskStatus.FAILED });
+          }
+          return respErr(
+            `Insufficient credits: this audio would cost ${costCredits} credits (${Math.round(durationSeconds)}s). You have ${remainingAfter}.`
+          );
+        }
+        const consumed = await consumeCredits({
+          userId: user.id,
+          credits: costCredits,
+          scene: 'create-book-tts',
+          description: `TTS by duration (${Math.round(durationSeconds)}s)`,
+          metadata: JSON.stringify({
+            type: 'ai-task',
+            mediaType: AIMediaType.SPEECH,
+            taskId: createdTaskId,
+            durationSeconds,
+          }),
+        });
+        if (createdTaskId && consumed?.id) {
           await updateAITaskById(createdTaskId, {
             status: AITaskStatus.SUCCESS,
             taskInfo: JSON.stringify(queryResult.taskInfo || info),
+            costCredits,
+            creditId: consumed.id,
           });
         }
-        return respData({ url: info.audioUrl });
+        return respData({
+          url: audioUrl,
+          durationSeconds: durationSeconds > 0 ? Math.round(durationSeconds) : undefined,
+          creditsConsumed: costCredits,
+        });
       }
       if (status === 'failed') {
         const msg = (info as any)?.errorMessage || (info as any)?.errorCode || 'TTS generation failed';

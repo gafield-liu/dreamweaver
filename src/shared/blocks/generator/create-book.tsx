@@ -339,8 +339,8 @@ export function CreateBookWizard({ className }: { className?: string }) {
   }, [storyStatus, storyText]);
 
   useEffect(() => {
-    if (user) fetchUserCredits?.();
-  }, [user, fetchUserCredits]);
+    if (user?.id) fetchUserCredits?.();
+  }, [user?.id, fetchUserCredits]);
 
   useEffect(() => {
     if (!chatIdFromUrl || !user) return;
@@ -711,7 +711,11 @@ export function CreateBookWizard({ className }: { className?: string }) {
       const { code, data } = await resp.json();
       if (code === 0 && data?.url) {
         setTtsAudioUrl(data.url);
-        toast.success(t('step3_voice_generated'));
+        const creditsSuffix =
+          typeof data.creditsConsumed === 'number'
+            ? t('voice_credits_consumed', { credits: data.creditsConsumed })
+            : '';
+        toast.success(t('step3_voice_generated') + creditsSuffix);
         fetchUserCredits?.();
       } else {
         toast.info(data?.message || t('step3_voice_unavailable'));
