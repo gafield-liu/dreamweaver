@@ -23,13 +23,37 @@ import { grantRoleForNewUser } from '@/shared/services/rbac';
 const recentVerificationEmailSentAt = new Map<string, number>();
 const VERIFICATION_EMAIL_MIN_INTERVAL_MS = 60_000;
 
+// Build allowed hosts for dynamic baseURL (Vercel preview + custom domain).
+// When using dynamic baseURL, trustedOrigins are derived from allowedHosts.
+function getBaseURLConfig(): string | { allowedHosts: string[]; fallback?: string; protocol?: 'http' | 'https' | 'auto' } {
+  const appUrl = envConfigs.app_url || envConfigs.auth_url;
+  if (!appUrl) return '';
+
+  try {
+    const host = new URL(appUrl).host;
+    const allowedHosts = [
+      host,
+      '*.vercel.app',
+      'localhost:3000',
+      'localhost:3001',
+    ].filter((h, i, arr) => arr.indexOf(h) === i);
+
+    return {
+      allowedHosts,
+      fallback: appUrl,
+      protocol: process.env.NODE_ENV === 'development' ? 'http' : 'auto',
+    };
+  } catch {
+    return appUrl;
+  }
+}
+
 // Static auth options - NO database connection
 // This ensures zero database calls during build time
 const authOptions = {
   appName: envConfigs.app_name,
-  baseURL: envConfigs.auth_url,
+  baseURL: getBaseURLConfig(),
   secret: envConfigs.auth_secret,
-  trustedOrigins: envConfigs.app_url ? [envConfigs.app_url] : [],
   user: {
     // Allow persisting custom columns on user table.
     // Without this, better-auth may ignore extra properties during create/update.

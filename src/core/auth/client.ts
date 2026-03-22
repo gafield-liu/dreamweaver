@@ -79,9 +79,14 @@ function createGetSessionThrottledFetch({
 const AUTH_GET_SESSION_MIN_INTERVAL_MS =
   Number(process.env.NEXT_PUBLIC_AUTH_GET_SESSION_MIN_INTERVAL_MS) || 2000;
 
+// Use same-origin in browser so auth API is always called on current domain.
+// Fixes "failed to fetch" on Vercel when NEXT_PUBLIC_APP_URL differs from deployment URL (e.g. preview URLs).
+const getClientBaseURL = () =>
+  typeof window !== 'undefined' ? '' : envConfigs.auth_url;
+
 // create default auth client, without plugins
 export const authClient = createAuthClient({
-  baseURL: envConfigs.auth_url,
+  baseURL: getClientBaseURL(),
   fetchOptions: {
     // Avoid amplifying request storms (e.g. during env/db switching in dev).
     // IMPORTANT: auth mutations (sign-in/sign-up) must be non-retriable,
@@ -99,7 +104,7 @@ export const { useSession, signIn, signUp, signOut } = authClient;
 // get auth client with plugins
 export function getAuthClient(configs: Record<string, string>) {
   const authClient = createAuthClient({
-    baseURL: envConfigs.auth_url,
+    baseURL: getClientBaseURL(),
     plugins: getAuthPlugins(configs),
     fetchOptions: {
       // Avoid amplifying request storms (e.g. during env/db switching in dev).
