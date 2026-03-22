@@ -23,36 +23,50 @@ import { grantRoleForNewUser } from '@/shared/services/rbac';
 const recentVerificationEmailSentAt = new Map<string, number>();
 const VERIFICATION_EMAIL_MIN_INTERVAL_MS = 60_000;
 
-// Build allowed hosts for dynamic baseURL (Vercel preview + custom domain).
-// When using dynamic baseURL, trustedOrigins are derived from allowedHosts.
-function getBaseURLConfig(): string | { allowedHosts: string[]; fallback?: string; protocol?: 'http' | 'https' | 'auto' } {
-  const appUrl = envConfigs.app_url || envConfigs.auth_url;
-  if (!appUrl) return '';
+/** Normalize env URL or host to origin string for better-auth CSRF / callback checks. */
+function addAuthTrustedOrigin(origins: Set<string>, raw?: string | null) {
+  if (!raw?.trim()) return;
+  const s = raw.trim();
+  try {
+    const withProtocol = /^https?:\/\//i.test(s) ? s : `https://${s}`;
+    origins.add(new URL(withProtocol).origin);
+  } catch {
+    // ignore invalid values
+  }
+}
+
+/**
+ * Vercel preview / production domain often differs from NEXT_PUBLIC_APP_URL.
+ * better-auth rejects POST sign-in/sign-up when Origin is not trusted → browser shows "failed to fetch".
+ */
+function resolveTrustedOriginsForRequest(request: Request): string[] {
+  const origins = new Set<string>();
+
+  addAuthTrustedOrigin(origins, envConfigs.app_url);
+  addAuthTrustedOrigin(origins, envConfigs.auth_url);
+  addAuthTrustedOrigin(origins, process.env.NEXT_PUBLIC_APP_URL);
+  addAuthTrustedOrigin(origins, process.env.AUTH_URL);
+  addAuthTrustedOrigin(origins, process.env.BETTER_AUTH_URL);
+
+  if (process.env.VERCEL_URL) {
+    addAuthTrustedOrigin(origins, `https://${process.env.VERCEL_URL}`);
+  }
+  addAuthTrustedOrigin(origins, process.env.VERCEL_BRANCH_URL);
 
   try {
-    const host = new URL(appUrl).host;
-    const allowedHosts = [
-      host,
-      '*.vercel.app',
-      'localhost:3000',
-      'localhost:3001',
-    ].filter((h, i, arr) => arr.indexOf(h) === i);
-
-    return {
-      allowedHosts,
-      fallback: appUrl,
-      protocol: process.env.NODE_ENV === 'development' ? 'http' : 'auto',
-    };
+    origins.add(new URL(request.url).origin);
   } catch {
-    return appUrl;
+    // ignore
   }
+
+  return [...origins];
 }
 
 // Static auth options - NO database connection
 // This ensures zero database calls during build time
 const authOptions = {
   appName: envConfigs.app_name,
-  baseURL: getBaseURLConfig(),
+  baseURL: envConfigs.auth_url,
   secret: envConfigs.auth_secret,
   user: {
     // Allow persisting custom columns on user table.
@@ -101,6 +115,7 @@ export async function getAuthOptions(configs: Record<string, string>) {
 
   return {
     ...authOptions,
+    trustedOrigins: resolveTrustedOriginsForRequest,
     // Add database connection only when actually needed (runtime)
     database: envConfigs.database_url
       ? drizzleAdapter(db(), {
