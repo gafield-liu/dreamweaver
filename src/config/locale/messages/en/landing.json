@@ -30,7 +30,7 @@
       "show_name": false,
       "show_credits": false,
       "show_sign_in": true,
-      "show_sign_out": false,
+      "show_sign_out": true,
       "items": []
     },
     "show_sign": true,

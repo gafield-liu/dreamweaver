@@ -224,7 +224,7 @@ export function SignUser({
               </>
             )}
 
-            {userNav?.show_sign_out && (
+            {(userNav?.show_sign_out ?? true) && (
               <DropdownMenuItem
                 className="w-full cursor-pointer"
                 onClick={() =>
