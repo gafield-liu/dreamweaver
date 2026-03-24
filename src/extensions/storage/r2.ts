@@ -54,9 +54,20 @@ export class R2Provider implements StorageProvider {
   getPublicUrl = (options: { key: string; bucket?: string }) => {
     const uploadBucket = options.bucket || this.configs.bucket;
     const uploadPath = this.getUploadPath();
-    const fallbackUrl = `${this.getEndpoint()}/${uploadBucket}/${uploadPath}/${options.key}`;
+    const endpoint = this.getEndpoint();
+    const fallbackUrl = `${endpoint}/${uploadBucket}/${uploadPath}/${options.key}`;
     const base = this.configs.publicDomain?.replace(/\/+$/, '') || null;
-    return base ? `${base}/${uploadPath}/${options.key}` : fallbackUrl;
+    if (!base) return fallbackUrl;
+    try {
+      const pub = new URL(base);
+      const ep = new URL(endpoint);
+      if (pub.hostname === ep.hostname) {
+        return `${base}/${uploadBucket}/${uploadPath}/${options.key}`;
+      }
+    } catch {
+      return fallbackUrl;
+    }
+    return `${base}/${uploadPath}/${options.key}`;
   };
 
   exists = async (options: { key: string; bucket?: string }) => {

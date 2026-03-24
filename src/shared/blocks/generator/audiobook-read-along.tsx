@@ -41,6 +41,8 @@ export function AudiobookReadAlong({
   const audioRef = useRef<HTMLAudioElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const mergedVideoRef = useRef<HTMLVideoElement>(null);
+  const onCreditsRefreshRef = useRef(onCreditsRefresh);
+  onCreditsRefreshRef.current = onCreditsRefresh;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const paragraphRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
@@ -208,14 +210,15 @@ export function AudiobookReadAlong({
         if (res.code === 0 && res.data?.url) {
           setMergedVideoUrl(res.data.url);
           setMergeError(null);
-          onCreditsRefresh?.();
+          onCreditsRefreshRef.current?.();
         } else {
           setMergeError(res.message || 'Merge failed');
         }
       })
       .catch(() => setMergeError('Merge request failed'))
       .finally(() => setMergeLoading(false));
-  }, [characterIsVideo, ttsAudioUrl, characterImageUrl, mergeRetryKey, remainingCredits, onCreditsRefresh]);
+    // 不把 remainingCredits / onCreditsRefresh 放进依赖：合成成功后会 refresh 积分，若依赖积分会再次触发 effect，造成重复请求与重复扣费。
+  }, [characterIsVideo, ttsAudioUrl, characterImageUrl, mergeRetryKey]);
 
   const handleMergeRetry = useCallback(() => {
     setMergeError(null);
@@ -311,6 +314,7 @@ export function AudiobookReadAlong({
               </div>
             ) : useMerged && mergedVideoUrl ? (
               <video
+                key={mergedVideoUrl}
                 ref={mergedVideoRef}
                 src={mergedVideoUrl}
                 className="h-full w-full object-contain"

@@ -1,0 +1,12 @@
+{
+  "name": "audiobook-merge-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "aws4fetch": "^1.0.20",
+    "undici": "^7.0.0"
+  }
+}

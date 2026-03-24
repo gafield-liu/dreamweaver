@@ -158,7 +158,6 @@ const TTS_VOICE_OPTIONS: { value: string; label: string }[] = [
   { value: '1hlpeD1ydbI2ow0Tt3EW', label: 'Hope - Poetic, Romantic and Captivating' },
   { value: 'wJqPPQ618aTW29mptyoc', label: 'Olivia - Smooth, Warm and Engaging' },
   { value: 'EiNlNiXeDU1pqqOPrYMO', label: 'Ana Rita - Smooth, Expressive and Bright' },
-  { value: 'EiNlNiXeDU1pqqOPrYMO', label: 'John Doe - Deep' },
   { value: 'FUfBrNit0NNZAwb58KWH', label: 'Angela - Conversational and Friendly' },
   { value: '4YYIPFl9wE5c4L2eu2Gb', label: 'Burt Reynolds™ - Deep, Smooth and clear' },
   { value: 'OYWwCdDHouzDwiZJWOOu', label: 'David - Gruff Cowboy' },
@@ -1098,8 +1097,8 @@ export function CreateBookWizard({ className }: { className?: string }) {
                     value={ttsVoice}
                     onChange={(e) => setTtsVoice(e.target.value)}
                   >
-                    {TTS_VOICE_OPTIONS.map((opt) => (
-                      <option key={opt.value} value={opt.value}>
+                    {TTS_VOICE_OPTIONS.map((opt, index) => (
+                      <option key={`${opt.value}-${index}`} value={opt.value}>
                         {opt.label}
                       </option>
                     ))}
