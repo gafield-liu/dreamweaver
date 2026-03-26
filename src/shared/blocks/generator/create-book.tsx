@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   Sparkles,
   BookMarked,
+  Upload,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
@@ -314,6 +315,7 @@ export function CreateBookWizard({ className }: { className?: string }) {
 
   const storyPreviewRef = useRef<HTMLDivElement>(null);
   const storyTextareaRef = useRef<HTMLTextAreaElement>(null);
+  const videoFileInputRef = useRef<HTMLInputElement>(null);
   const streamAccRef = useRef('');
   const rafIdRef = useRef<number | null>(null);
 
@@ -917,10 +919,11 @@ export function CreateBookWizard({ className }: { className?: string }) {
                 {t('step1_upload_video_hint')}
               </p>
               <div className="flex flex-wrap items-center gap-2">
-                <Input
+                <input
+                  ref={videoFileInputRef}
                   type="file"
                   accept="video/*"
-                  className="max-w-xs cursor-pointer"
+                  className="hidden"
                   disabled={isUploadingVideo}
                   onChange={(e) => {
                     const file = e.target.files?.[0];
@@ -928,6 +931,16 @@ export function CreateBookWizard({ className }: { className?: string }) {
                     e.target.value = '';
                   }}
                 />
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  disabled={isUploadingVideo}
+                  onClick={() => videoFileInputRef.current?.click()}
+                >
+                  <Upload className="mr-2 size-4" />
+                  {t('step1_choose_video_file')}
+                </Button>
                 {isUploadingVideo && (
                   <>
                     <Loader2 className="size-4 animate-spin text-muted-foreground" />

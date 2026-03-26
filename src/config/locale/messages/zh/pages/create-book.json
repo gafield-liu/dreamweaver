@@ -26,6 +26,7 @@
     "step1_using_pasted_url": "当前使用粘贴的链接（未经过 AI 生成）。",
     "step1_or_paste_url": "方式二：直接使用视频/图片链接",
     "step1_upload_video": "方式三：本地上传视频",
+    "step1_choose_video_file": "选择视频文件",
     "step1_upload_video_hint": "从本地上传视频文件（如 MP4、WebM），将作为故事主角使用，不经过 AI 生成。",
     "step1_uploading_video": "上传中…",
     "step1_upload_video_done": "视频已上传。",

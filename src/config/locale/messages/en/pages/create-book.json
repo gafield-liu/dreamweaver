@@ -26,6 +26,7 @@
     "step1_using_pasted_url": "Using pasted URL (no AI generation).",
     "step1_or_paste_url": "Option B: Use video/image URL directly",
     "step1_upload_video": "Option C: Upload local video",
+    "step1_choose_video_file": "Choose video file",
     "step1_upload_video_hint": "Upload a video file from your device (e.g. MP4, WebM). It will be used as the story hero—no AI generation.",
     "step1_uploading_video": "Uploading…",
     "step1_upload_video_done": "Video uploaded.",
