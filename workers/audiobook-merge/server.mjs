@@ -43,17 +43,33 @@ const MERGE_PRESIGNED_EXPIRES_SECONDS = Math.min(
  * 若后台「公开域名」在 Docker/内网无法解析（ENOTFOUND），可在此列出 host，下载时改为
  * `${R2_ENDPOINT}/${R2_BUCKET_NAME}/<path>`；下载时再用 R2 密钥做签名 GET（匿名访问 S3 API 会 400）。
  * 例：-e MERGE_DOWNLOAD_REWRITE_HOSTS=r2.storycreater.com
+ *
+ * `*.r2.dev`（如 pub-xxx.r2.dev）默认也会重写：私有桶或未开匿名读时，直接 curl 公开链常 404/403，
+ * 走 S3 签名 GET 可拉取（需已配置 R2 密钥，与上传相同）。
+ * 若确需只走匿名 HTTP，可设 MERGE_REWRITE_R2_DEV=0。
  */
 const MERGE_DOWNLOAD_REWRITE_HOSTS = (process.env.MERGE_DOWNLOAD_REWRITE_HOSTS || '')
   .split(',')
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
 
+const MERGE_REWRITE_R2_DEV = !['0', 'false', 'no'].includes(
+  (process.env.MERGE_REWRITE_R2_DEV ?? '1').trim().toLowerCase()
+);
+
+function isR2DevPublicHostname(hostname) {
+  const h = hostname.toLowerCase();
+  return h === 'r2.dev' || h.endsWith('.r2.dev');
+}
+
 function rewriteDownloadUrl(url) {
-  if (!MERGE_DOWNLOAD_REWRITE_HOSTS.length || !R2_ENDPOINT || !R2_BUCKET_NAME) return url;
+  if (!R2_ENDPOINT || !R2_BUCKET_NAME || !R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY) return url;
   try {
     const u = new URL(url);
-    if (!MERGE_DOWNLOAD_REWRITE_HOSTS.includes(u.hostname.toLowerCase())) return url;
+    const h = u.hostname.toLowerCase();
+    const manual = MERGE_DOWNLOAD_REWRITE_HOSTS.includes(h);
+    const r2dev = MERGE_REWRITE_R2_DEV && isR2DevPublicHostname(h);
+    if (!manual && !r2dev) return url;
     const path = u.pathname.replace(/^\/+/, '');
     if (!path) return url;
     return `${R2_ENDPOINT}/${R2_BUCKET_NAME}/${path}`;

@@ -42,6 +42,9 @@ docker run -p 8080:8080 \
 
 - **R2\_\***：与 ShipAny 后台/数据库里配置的 R2 一致，保证上传路径与主站 `r2_upload_path` 相同，浏览器才能用同一域名访问。
 - **WORKER_SECRET**：可选；若设置，主站必须配置相同的 `MERGE_VIDEO_AUDIO_WORKER_SECRET`。
+- **下载 404**：主站传入的 `videoUrl` / `audioUrl` 若是 **`pub-*.r2.dev`** 等公开链，而桶为**私有**或匿名读未开，匿名拉取会 **404**。Worker 已默认把 `*.r2.dev` 转成 S3 API 路径并用 **与上传相同的密钥做签名 GET**（无需再配 `MERGE_DOWNLOAD_REWRITE_HOSTS`）。若仍 404，请到 Cloudflare R2 控制台核对 **对象键** 是否与 URL 路径一致（例如是否多了/少了 `uploads/` 前缀）。
+- **MERGE_DOWNLOAD_REWRITE_HOSTS**：自有域名（如 `r2.example.com`）需拉取时走签名，可填 `r2.example.com`（逗号分隔多个）。
+- **MERGE_REWRITE_R2_DEV**：设为 `0` 可关闭对 `*.r2.dev` 的自动重写（极少需要）。
 
 ## 与 Vercel 主站配合（推荐）
 
