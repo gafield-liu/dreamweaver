@@ -5,7 +5,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-# Build from repo root: docker build -f workers/audiobook-merge/Dockerfile .
+# 构建上下文须为本目录：cd workers/audiobook-merge && docker build -t audiobook-merge .
+# Railway：Root Directory 填 workers/audiobook-merge（勿用仓库根目录，否则会 COPY 错 package.json）。
 COPY package.json ./
 RUN npm install --omit=dev
 

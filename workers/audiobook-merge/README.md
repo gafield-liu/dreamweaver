@@ -2,6 +2,26 @@
 
 供 **Vercel 等无 ffmpeg** 的环境使用：主站 API 在设置 `MERGE_VIDEO_AUDIO_WORKER_URL` 后将请求转发到本服务，由容器内 ffmpeg 合成并上传 **与主站相同的 R2 桶**，返回公网 `url`。
 
+## Railway 部署（推荐：连 GitHub，无需手动 docker push）
+
+1. 把本仓库推到 **GitHub**（或 Railway 支持的 Git 源）。
+2. 打开 [railway.com](https://railway.com) → **New Project** → **Deploy from GitHub repo** → 选中仓库。
+3. 创建服务后打开 **Settings**：
+   - **Root Directory** 填：`workers/audiobook-merge`（必须，否则 Dockerfile 会装错依赖）。
+   - 若未自动识别 Docker：**Service** → **Settings** → Build 选 **Dockerfile**，路径 `Dockerfile`。
+4. **Variables** 里配置与本地 `docker run -e` 相同的环境变量（见下表），并确认：
+   - Railway 会注入 **`PORT`**，本服务已读 `process.env.PORT`，无需手写 `8080`。
+   - 若设了 **`WORKER_SECRET`**，主站 `MERGE_VIDEO_AUDIO_WORKER_SECRET` 须一致。
+5. 部署成功后，在 **Networking** → **Generate Domain**，得到公网地址，例如 `https://xxx.up.railway.app`。
+6. 主站（Vercel / 自建）设置：  
+   `MERGE_VIDEO_AUDIO_WORKER_URL` = `https://xxx.up.railway.app/merge`  
+   （末尾必须是 **`/merge`**，与 `server.mjs` 路由一致。）
+7. 浏览器访问 `https://xxx.up.railway.app/health` 应返回 `ok`。
+
+**可选：用镜像仓库部署**（不连 GitHub 时）：本地 `docker build` / `docker tag` / `docker push` 到 Docker Hub 或 GHCR，在 Railway **New** → **Docker Image** 填镜像地址，同样配置环境变量与端口。
+
+---
+
 ## 部署示例（Fly.io / Railway / Render / 自建 Docker）
 
 ```bash
