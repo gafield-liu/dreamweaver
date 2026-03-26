@@ -1,3 +1,6 @@
+# 构建上下文须为「Git 仓库根目录」（与 Railway 单仓部署一致）：
+#   docker build -f workers/audiobook-merge/Dockerfile -t audiobook-merge .
+# 若上下文仅为本目录，COPY 会找不到 workers/ 前缀，请勿在子目录单独 build。
 FROM node:20-bookworm-slim
 
 RUN apt-get update \
@@ -5,12 +8,10 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-# 构建上下文须为本目录：cd workers/audiobook-merge && docker build -t audiobook-merge .
-# Railway：Root Directory 填 workers/audiobook-merge（勿用仓库根目录，否则会 COPY 错 package.json）。
-COPY package.json ./
+COPY workers/audiobook-merge/package.json ./
 RUN npm install --omit=dev
 
-COPY server.mjs ./
+COPY workers/audiobook-merge/server.mjs ./
 
 ENV NODE_ENV=production
 EXPOSE 8080
